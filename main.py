@@ -18,13 +18,7 @@ master.configure(background='gray20')
 
 def LogIn():
     Label(master, text="Welcome to the Post Oak Distance Learning Hub", anchor="w", bg="lightgreen", fg="White",font=('Times New Roman', '20')).place(x=102, y=0, height=40, width=398)
-    Button(master, text='Search', command=LogIn, bg='green', fg='white', highlightbackground='green').place(x=380, y=346, height=35, width=70) #login button
-    Label(master, text='Custom URL', bg='gray40', fg='white', highlightbackground='gray30').place(x=5, y=352,)#next 4 lines are labels and entry boxes for first and last name.
-    Entry(master).place(x=100, y=350, width=275)
 LogIn()
-
-
-
 
 def mainMenu():
 
@@ -54,67 +48,78 @@ def comWeb():
     Button(small, text='Loom', command=theLoom, bg="pink", fg="black", highlightbackground="pink").place(x=360, y=135, height=30, width=110)
     Button(small, text='Blogger', command=blogGer, bg="orange", fg="white", highlightbackground="orange").place(x=360, y=190, height=30, width=110)
     #master search button
-    Button(small, text='Master Search', command=masterSearch, bg="red", fg="white", highlightbackground="red").place(x=175, y=250,height=30,width=150)
+    Button(small, text='Master Search', command=masterSearch, bg="red", fg="white", highlightbackground="red").place(x=300, y=250,height=30,width=150)
+    Button(small, text='Save Presets', command=savePresets, bg="white", fg="black", highlightbackground="white").place(x=45, y=250, height=30, width=150)
 
+    '''
+    file = open('pref.ini')
+    counter = 0
 
-
-
+    for line in file:
+        line = line.strip('\n')
+        #print(line)
+        counter += 1
+        lineValue = 'box' + str(counter) + 's = 0'
+        if lineValue == line:
+            print(line)
+            box1.deselect()
+            '''
 #Below are all the check boxes that allow the user to use the 'master search' function, which is what these boxes coincide with.
-    global box1s
+    global box1s,box1
     box1s = StringVar()
     box1 = Checkbutton(small,text='',variable=box1s,bg="gray20",fg="white")
     box1.deselect()
     box1.place(x=130,y=80)
 
-    global box2s
+    global box2s,box2
     box2s = StringVar()
     box2 = Checkbutton(small, text='', variable=box2s, bg="gray20", fg="black")
     box2.deselect()
     box2.place(x=130, y=140)
 
-    global box3s
+    global box3s,box3
     box3s = StringVar()
     box3 = Checkbutton(small, text='', variable=box3s, bg="gray20", fg="black")
     box3.deselect()
     box3.place(x=130, y=195)
 
-    global box4s
+    global box4s,box4
     box4s = StringVar()
     box4 = Checkbutton(small, text='', variable=box4s, bg="gray20", fg="white")
     box4.deselect()
     box4.place(x=310, y=80)
 
-    global box5s
+    global box5s,box5
     box5s = StringVar()
     box5 = Checkbutton(small, text='', variable=box5s, bg="gray20", fg="black")
     box5.deselect()
     box5.place(x=310, y=140)
 
-    global box6s
+    global box6s,box6
     box6s = StringVar()
     box6 = Checkbutton(small, text='', variable=box6s, bg="gray20", fg="black")
     box6.deselect()
     box6.place(x=310, y=195)
 
-    global box7s
+    global box7s,box7
     box7s = StringVar()
     box7 = Checkbutton(small, text='', variable=box7s, bg="gray20", fg="white")
     box7.deselect()
     box7.place(x=475, y=79)
 
-    global box8s
+    global box8s,box8
     box8s = StringVar()
     box8 = Checkbutton(small, text='', variable=box8s, bg="gray20", fg="black")
     box8.deselect()
     box8.place(x=475, y=139)
 
-    global box9s
+    global box9s,box9
     box9s = StringVar()
     box9 = Checkbutton(small, text='', variable=box9s, bg="gray20", fg="black")
     box9.deselect()
     box9.place(x=475, y=195)
 
-
+    readINI()
 
 #This function is devoted to allowing the user to select multiple links at the same time to open them simotaniously
 def masterSearch():
@@ -146,6 +151,40 @@ def masterSearch():
     if (box9s.get()=='1'):
         blogGer()
 
+def savePresets():
+    print('savePresets')
+    var1=box1s.get()
+    print(var1)
+    print(type(var1))
+    lineValue = 'box' + str(var1) + 's = 1'
+    with open('pref.ini', 'r') as file:
+       data = file.readlines()
+    data[0]=lineValue + '\n'
+    with open('pref.ini', 'w') as file:
+        file.writelines(data)
+def readINI():
+    file=open('pref.ini')
+    for line in file:
+        line = line.strip('\n')
+        #lineValue='box'+str(counter)+'s = 1'
+        if 'box1s = 1' == line:
+            box1.select()
+        if 'box2s = 1' == line:
+            box2.select()
+        if 'box3s = 1' == line:
+            box3.select()
+        if 'box4s = 1' == line:
+            box4.select()
+        if 'box5s = 1' == line:
+            box5.select()
+        if 'box6s = 1' == line:
+            box6.select()
+        if 'box7s = 1' == line:
+            box7.select()
+        if 'box8s = 1' == line:
+            box8.select()
+        if 'box9s = 1' == line:
+            box9.select()
 
 #class meeting page
 def classMeet(): #This is the class meeting window, it will take you to classes.
@@ -187,6 +226,14 @@ def customPreset():
     small.configure(background='gray30')
     Label(small, text="User's Custom Presets", anchor="w", bg="gray30", fg="White",
           font=('Times New Roman', '20')).place(x=160, y=0, height=40, width=300)
+    Button(small, text='Search', command=customLink, bg='green', fg='white', highlightbackground='green').place(x=380,y=246, height=35,width=70)  # login button
+    Label(small, text='Custom URL', bg='gray40', fg='white', highlightbackground='gray30').place(x=5,y=252, )
+    Entry(small).place(x=100, y=250, width=275)
+def customLink():
+    new = 1
+    url= " "
+    webbrowser.open(url, new=new)
+# next 4 lines are labels and entry boxes for first and last name
 mainMenu()
 #Below are the functions which are displayed in the "Common Websites" window, these take you to commonly used websites
 def browse_web():
