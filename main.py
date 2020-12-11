@@ -22,9 +22,9 @@ LogIn()
 
 def mainMenu():
 
-    Button(master, text='Open Common Websites', command=comWeb, bg="green", fg="black", highlightbackground="green", font=('Times New Roman', '15')).place(x=32, y=100, height=100, width=160)
+    Button(master, text='Open Common Websites', command=comWeb, bg="green", fg="white", highlightbackground="green", font=('Times New Roman', '15')).place(x=32, y=100, height=100, width=160)
     Button(master, text='Open Class Meetings', command=classMeet, bg="yellow", fg="black", highlightbackground="yellow", font=('Times New Roman', '15')).place(x=222, y=100, height=100, width=150)
-    Button(master, text='Open Personal Meetings', command=personMeet, bg="blue", fg="black", highlightbackground="blue",font=('Times New Roman', '15')).place(x=400, y=100, height=100, width=160)
+    Button(master, text='Open Personal Meetings', command=personMeet, bg="blue", fg="white", highlightbackground="blue",font=('Times New Roman', '15')).place(x=400, y=100, height=100, width=160)
     Button(master, text='Open Custom Presets', command=customPreset, bg="red", fg="white", highlightbackground="red", font=('Times New Roman', '25')).place(x=32, y=210, height=100, width=528)
 
 
@@ -192,9 +192,9 @@ def classMeet(): #This is the class meeting window, it will take you to classes.
     small.title("Class Meetings")
     small.geometry('700x400')
     small.configure(background='gray20')
-    Label(small, text="Class Meetings", anchor="w", bg="gray20", fg="White",font=('Times New Roman', '20')).place(x=290, y=0, height=40, width=440)
-    Label(small, text="9/10", anchor="w", bg="gray20", fg="White", font=('Times New Roman', '20')).place(x=120, y=25, height=40, width=440)
-    Label(small, text="11/12", anchor="w", bg="gray20", fg="White", font=('Times New Roman', '20')).place(x=520, y=25, height=40,width=440)
+    Label(small, text="Class Meetings", anchor="w", bg="gray20", fg="White",font=('Times New Roman', '20')).place(x=290, y=0, height=30, width=440)
+    Label(small, text="9/10", anchor="w", bg="gray20", fg="White", font=('Times New Roman', '20')).place(x=120, y=25, height=35, width=440)
+    Label(small, text="11/12", anchor="w", bg="gray20", fg="White", font=('Times New Roman', '20')).place(x=520, y=25, height=35,width=440)
     Button(small, text='Computer Science', command=comp_sci_, bg="blue", fg="white", highlightbackground="blue").place(x=560, y=60, height=32, width=135)
     Button(small, text='Theory of Knowledge', command=knowTheory, bg="pink", fg="white", highlightbackground="pink").place(x=400, y=60, height=32, width=135)
     Button(small, text='Math SL', command=mathSL, bg="orange", fg="white", highlightbackground="orange").place(x=560, y=100, height=32, width=135)
@@ -214,10 +214,27 @@ def classMeet(): #This is the class meeting window, it will take you to classes.
 def personMeet():
     small = Toplevel(master) #This is the personal meeting window.
     small.title("Personal Meetings")
-    small.geometry('500x300')
+    small.geometry('500x650')
     small.configure(background='gray20')
-    Label(small, text="Personal Meeting Rooms", anchor="w", bg="gray20", fg="White",
-          font=('Times New Roman', '20')).place(x=155, y=0, height=40, width=440)
+    Label(small, text="Personal Meeting Rooms", anchor="w", bg="gray20", fg="white",font=('Times New Roman', '20')).place(x=155, y=0, height=40, width=440)
+    Button(small, text='Mr. Beradino', command=comp_sci_, bg="blue", fg="white", highlightbackground="blue").place(x=35, y=50, height=32, width=115)
+    Button(small, text='Dr. Cobos', command=knowTheory, bg="pink", fg="black",highlightbackground="pink").place(x=35, y=150, height=32, width=115)
+    Button(small, text='Mr. Grisbee', command=mathSL, bg="orange", fg="black", highlightbackground="orange").place(x=35,y=250, height=32, width=115)
+    Button(small, text='Mr. Jacobs', command=mathStudies, bg="orange", fg="black", highlightbackground="orange").place(x=35, y=350, height=32, width=115)
+    Button(small, text='Ms. Vasquez', command=artEleven, bg="yellow", fg="black", highlightbackground="yellow").place(x=200, y=50, height=32, width=115)
+    Button(small, text='Ms. Sloan', command=artTwelve, bg="yellow", fg="black", highlightbackground="yellow").place(x=200, y=150, height=32, width=115)
+    Button(small, text='Ms. Bowman', command=thEAtre, bg="yellow", fg="black", highlightbackground="yellow").place(x=200, y=250, height=32,width=115)
+    Button(small, text='Ms. Harrison', command=filmClass, bg="white", fg="black", highlightbackground="white").place(x=200,y=350,height=32,width=115)
+    Button(small, text='Mr. Zhou', command=chineseClass, bg="red", fg="white", highlightbackground="red").place(x=368,y=50,height=32,width=115)
+    Button(small, text='Ms. Novak', command=spanishClass, bg="red", fg="white", highlightbackground="red").place(x=368,y=150,height=32,width=115)
+    Button(small, text='Mr. Roddy', command=gpHC, bg="blue", fg="white", highlightbackground="blue").place(x=368,y=250,height=32,width=115)
+    Button(small, text='Dr. Quillin', command=ecON, bg="blue", fg="white", highlightbackground="blue").place(x=368, y=350,height=32,width=115)
+    Button(small, text='Ms. Mayhew', command=chemISTRY, bg="purple", fg="white", highlightbackground="purple").place(x=35, y=450, height=32, width=115)
+    Button(small, text='Dr. Ott', command=bioLOGY, bg="purple", fg="white", highlightbackground="purple").place(x=200,y=450,height=32,width=115)
+    Button(small, text='Mr. Dorsey', command=coLLEGE, bg="white", fg="black", highlightbackground="white").place(x=368, y=450, height=32, width=115)
+    Button(small, text='Dr. Lee', command=lEE, bg="white", fg="black", highlightbackground="white").place(x=35, y=450, height=32, width=115)
+    Button(small, text='Ms. Pilisi', command=heALTH, bg="pink", fg="black", highlightbackground="pink").place(x=200, y=450, height=32, width=115)
+    Button(small, text='Mr. Lowery', command=lowERY, bg="white", fg="black", highlightbackground="white").place(x=200, y=550, height=32, width=115)
 #This function is user-specific, it allows the user to choose their own presets for links and meetings to make the use of this app more streamline.
 def customPreset():
     small = Toplevel(master)
@@ -353,6 +370,26 @@ def bioLOGY():
     url = "https://postoakschool.zoom.us/j/9718918223?pwd=NXJtWXE2MEsrQWs3MzhwbXFocnZEUT09"
     webbrowser.open(url, new=new)
     print("Taking you to Biology...")
+def coLLEGE():
+    new = 1
+    url = "https://postoakschool.zoom.us/j/7773704334"
+    webbrowser.open(url, new=new)
+    print("Taking you to Mr. Dorsey...")
+def lEE():
+    new = 1
+    url = "https://postoakschool.zoom.us/j/6493991948?pwd=MHR3MEpsbHNwcDVCRE9Tc09TVzlFQT09"
+    webbrowser.open(url, new=new)
+    print("Taking you to Dr. Lee...")
+def heALTH():
+    new = 1
+    url = "https://postoakschool.zoom.us/j/7489168410"
+    webbrowser.open(url, new=new)
+    print("Taking you to Ms. Pilisi...")
+def lowERY():
+    new = 1
+    url = "https://postoakschool.zoom.us/j/3054948681?pwd=NGs3YTZnaXQvOXM5bTZ6QXBoNFdtZz09"
+    webbrowser.open(url, new=new)
+    print("Taking you to Mr. Lowery...")
 
 
 #this function build the smaller windows which open and display one of the three choosable tabs.
