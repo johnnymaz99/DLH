@@ -152,21 +152,28 @@ def masterSearch():
         blogGer()
 
 def savePresets():
-    print('savePresets')
-    var1=box1s.get()
-    print(var1)
-    print(type(var1))
-    lineValue = 'box' + str(var1) + 's = 1'
-    with open('pref.ini', 'r') as file:
-       data = file.readlines()
-    data[0]=lineValue + '\n'
+    var1 = box1s.get()
+    var2 = box2s.get()
+    var3 = box3s.get()
+    var4 = box4s.get()
+    var5 = box5s.get()
+    var6 = box6s.get()
+    var7 = box7s.get()
+    var8 = box8s.get()
+    var9 = box9s.get()
+    varArray = [var1,var2,var3,var4,var5,var6,var7,var8,var9]
+    counter=0
     with open('pref.ini', 'w') as file:
-        file.writelines(data)
+        for i in varArray:
+            counter += 1
+            lineValue = 'box' + str(counter) + 's = '+i+'\n'
+            print(lineValue)
+            file.writelines(lineValue)
+
 def readINI():
     file=open('pref.ini')
     for line in file:
         line = line.strip('\n')
-        #lineValue='box'+str(counter)+'s = 1'
         if 'box1s = 1' == line:
             box1.select()
         if 'box2s = 1' == line:
@@ -185,7 +192,6 @@ def readINI():
             box8.select()
         if 'box9s = 1' == line:
             box9.select()
-
 #class meeting page
 def classMeet(): #This is the class meeting window, it will take you to classes.
     small = Toplevel(master)
@@ -239,16 +245,146 @@ def personMeet():
 def customPreset():
     small = Toplevel(master)
     small.title("Custom Saved Presets")
-    small.geometry('500x300')
+    small.geometry('600x300')
     small.configure(background='gray30')
-    Label(small, text="User's Custom Presets", anchor="w", bg="gray30", fg="White",
-          font=('Times New Roman', '20')).place(x=160, y=0, height=40, width=300)
+    Label(small, text="User's Custom Presets", anchor="w", bg="gray30", fg="White",font=('Times New Roman', '20')).place(x=210, y=0, height=40, width=300)
     Button(small, text='Search', command=customLink, bg='green', fg='white', highlightbackground='green').place(x=380,y=246, height=35,width=70)  # login button
     Label(small, text='Custom URL', bg='gray40', fg='white', highlightbackground='gray30').place(x=5,y=252, )
     Entry(small).place(x=100, y=250, width=275)
+    #Left Entry Boxes
+    Entry(small).place(x=40,y=75, height=30,width=145)
+    Entry(small).place(x=40, y=135, height=30, width=145)
+    Entry(small).place(x=40, y=190, height=30,width=145)
+    #Middle Entry Boxes
+    Entry(small).place(x=230, y=75, height=30, width=145)
+    Entry(small).place( x=230, y=135, height=30, width=145)
+    Entry(small).place(x=230, y=190, height=30, width=145)
+    #Right Entry Bozes
+    Entry(small).place( x=420, y=74, height=30, width=145)
+    Entry(small).place(x=420, y=135, height=30,width=145)
+    Entry(small).place(x=420,y=190, height=30,width=145)
+
+#Set Check Boxes
+    #Left Set Check Boxes
+    global box10s, box10
+    box10s = StringVar()
+    box10 = Checkbutton(small, text="Set", variable=box10s, bg="gray30", fg="white")
+    box10.deselect()
+    box10.place(x=40, y=50)
+
+    global box11s, box11
+    box11s = StringVar()
+    box11 = Checkbutton(small, text="Set", variable=box11s, bg="gray30", fg="white")
+    box11.deselect()
+    box11.place(x=40, y=110)
+
+    global box12s, box12
+    box12s = StringVar()
+    box12 = Checkbutton(small, text="Set", variable=box12s, bg="gray30", fg="white")
+    box12.deselect()
+    box12.place(x=40, y=165)
+
+    #Middle Set Check boxes
+    global box13s, box13
+    box13s = StringVar()
+    box13 = Checkbutton(small, text="Set", variable=box13s, bg="gray30", fg="white")
+    box13.deselect()
+    box13.place(x=230, y=50)
+
+    global box14s, box14
+    box14s = StringVar()
+    box14 = Checkbutton(small, text="Set", variable=box14s, bg="gray30", fg="white")
+    box14.deselect()
+    box14.place(x=230, y=110)
+
+    global box15s, box15
+    box15s = StringVar()
+    box15 = Checkbutton(small, text="Set", variable=box15s, bg="gray30", fg="white")
+    box15.deselect()
+    box15.place(x=230, y=165)
+
+    #Right Set Check Boxes
+    global box16s, box16
+    box16s = StringVar()
+    box16 = Checkbutton(small, text="Set", variable=box16s, bg="gray30", fg="white")
+    box16.deselect()
+    box16.place(x=420, y=50)
+
+    global box17s, box17
+    box17s = StringVar()
+    box17 = Checkbutton(small, text="Set", variable=box17s, bg="gray30", fg="white")
+    box17.deselect()
+    box17.place(x=420, y=110)
+
+    global box18s, box18
+    box18s = StringVar()
+    box18 = Checkbutton(small, text="Set", variable=box18s, bg="gray30", fg="white")
+    box18.deselect()
+    box18.place(x=420, y=165)
+
+#Search Check Boxes
+
+    #Left Search Check Boxes
+    global box19s,box19
+    box19s = StringVar()
+    box19 = Checkbutton(small,text="Search",variable=box19s,bg="gray30",fg="white")
+    box19.deselect()
+    box19.place(x=120,y=50)
+
+    global box20s,box20
+    box20s = StringVar()
+    box20 = Checkbutton(small, text="Search", variable=box20s, bg="gray30", fg="white")
+    box20.deselect()
+    box20.place(x=120, y=110)
+
+    global box21s,box21
+    box21s = StringVar()
+    box21 = Checkbutton(small, text="Search", variable=box21s, bg="gray30", fg="white")
+    box21.deselect()
+    box21.place(x=120, y=165)
+
+    #Middle Search Check Boxes
+    global box22s,box22
+    box22s = StringVar()
+    box22 = Checkbutton(small, text="Search", variable=box22s, bg="gray30", fg="white")
+    box22.deselect()
+    box22.place(x=305, y=50)
+
+    global box23s,box23
+    box23s = StringVar()
+    box23 = Checkbutton(small, text="Search", variable=box23s, bg="gray30", fg="white")
+    box23.deselect()
+    box23.place(x=305, y=110)
+
+    global box24s,box24
+    box24s = StringVar()
+    box24 = Checkbutton(small, text="Search", variable=box24s, bg="gray30", fg="white")
+    box24.deselect()
+    box24.place(x=305, y=165)
+
+    #Right Search Check Boxes
+    global box25s,box25
+    box25s = StringVar()
+    box25 = Checkbutton(small, text="Search", variable=box25s, bg="gray30", fg="white")
+    box25.deselect()
+    box25.place(x=490, y=50)
+
+    global box26s,box26
+    box26s = StringVar()
+    box26 = Checkbutton(small, text="Search", variable=box26s, bg="gray30", fg="white")
+    box26.deselect()
+    box26.place(x=490, y=110)
+
+    global box27s,box27
+    box27s = StringVar()
+    box27 = Checkbutton(small, text="Search", variable=box27s, bg="gray30", fg="white")
+    box27.deselect()
+    box27.place(x=490, y=165)
+    #6 entry boxes two checkmarks on each side of a check box(Set and Search)
+
 def customLink():
     new = 1
-    url= " "
+    url = " "
     webbrowser.open(url, new=new)
 # next 4 lines are labels and entry boxes for first and last name
 mainMenu()
