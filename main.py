@@ -340,8 +340,7 @@ def customPreset():
     Entry9 = Entry(small).place(x=420,y=190, height=30,width=145)
 #Set Check Boxes
     #Left Set Buttons
-    global Entry1Set
-    Entry1Set = Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=40, y=50, height=20,width=50)
+    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=40, y=50, height=20,width=50)
     Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=40, y=110, height=20,width=50)
     Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=40, y=167, height=20,width=50)
 
@@ -579,4 +578,3 @@ def buildSmall():
 #Label(master, text="Welcome to the Post Oak Distance Learning Hub", anchor="w", bg="gray20", fg="White", font=('Times New Roman', '20')).place(x=90,y=0,height= 40, width=440)
 
 master.mainloop()
-
