@@ -242,85 +242,118 @@ def personMeet():
     Button(small, text='Ms. Pilisi', command=heALTH, bg="pink", fg="black", highlightbackground="pink").place(x=200, y=450, height=32, width=115)
     Button(small, text='Mr. Lowery', command=lowERY, bg="white", fg="black", highlightbackground="white").place(x=200, y=550, height=32, width=115)
 #This function is user-specific, it allows the user to choose their own presets for links and meetings to make the use of this app more streamline.
+
+def getEntry():
+    global Entry1
+    Entry1 = StringVar()
+    Entry1 = Entry1.get()
+    new = 1
+    url = Entry1
+    webbrowser.open(url, new=new)
+    print("Going to " + Entry1)
+
+
+    global Entry2
+    Entry2 = StringVar()
+    Entry2 = Entry2.get()
+    new = 1
+    url = Entry2
+    webbrowser.open(url, new=new)
+    print("Going to " + Entry2)
+
+    global Entry3
+    Entry3 = StringVar()
+    Entry3 = Entry3.get()
+    new = 1
+    url = Entry3
+    webbrowser.open(url, new=new)
+    print("Going to " + Entry3)
+
+    global Entry4
+    Entry4 = StringVar()
+    Entry4 = Entry4.get()
+    new = 1
+    url = Entry4
+    webbrowser.open(url, new=new)
+    print("Going to " + Entry4)
+
+    global Entry5
+    Entry5 = StringVar()
+    Entry5 = Entry5.get()
+    new = 1
+    url = Entry5
+    webbrowser.open(url, new=new)
+    print("Going to " + Entry5)
+
+    global Entry6
+    Entry6 = StringVar()
+    Entry6 = Entry6.get()
+    new = 1
+    url = Entry6
+    webbrowser.open(url, new=new)
+    print("Going to" + Entry6)
+
+    global Entry7
+    Entry7 = StringVar()
+    Entry7 = Entry7.get()
+    new = 1
+    url = Entry7
+    webbrowser.open(url, new=new)
+    print("Going to " + Entry7)
+
+    global Entry8
+    Entry8 = StringVar()
+    Entry8 = Entry8.get()
+    new = 1
+    url = Entry8
+    webbrowser.open(url, new=new)
+    print("Going to " + Entry8)
+
+    global Entry9
+    Entry9 = StringVar()
+    Entry9 = Entry9.get()
+    new = 1
+    url = Entry9
+    webbrowser.open(url, new=new)
+    print("Going to Google...")
+
+
 def customPreset():
     small = Toplevel(master)
     small.title("Custom Saved Presets")
     small.geometry('600x300')
     small.configure(background='gray30')
     Label(small, text="User's Custom Presets", anchor="w", bg="gray30", fg="White",font=('Times New Roman', '20')).place(x=210, y=0, height=40, width=300)
-    Button(small, text='Search', command=customLink, bg='green', fg='white', highlightbackground='green').place(x=380,y=246, height=35,width=70)  # login button
-    Label(small, text='Custom URL', bg='gray40', fg='white', highlightbackground='gray30').place(x=5,y=252, )
-    Entry(small).place(x=100, y=250, width=275)
+    Button(small, text='Search', command=getEntry, bg='green', fg='white', highlightbackground='green').place(x=380,y=246, height=35,width=70)  # login button
+
     #Left Entry Boxes
-    Entry(small).place(x=40,y=75, height=30,width=145)
-    Entry(small).place(x=40, y=135, height=30, width=145)
-    Entry(small).place(x=40, y=190, height=30,width=145)
+    Entry1 = Entry(small).place(x=40,y=75, height=30,width=145)
+    Entry2 = Entry(small).place(x=40, y=135, height=30, width=145)
+    Entry3 = Entry(small).place(x=40, y=190, height=30,width=145)
     #Middle Entry Boxes
-    Entry(small).place(x=230, y=75, height=30, width=145)
-    Entry(small).place( x=230, y=135, height=30, width=145)
-    Entry(small).place(x=230, y=190, height=30, width=145)
+    Entry4 = Entry(small).place(x=230, y=75, height=30, width=145)
+    Entry5 = Entry(small).place( x=230, y=135, height=30, width=145)
+    Entry6 = Entry(small).place(x=230, y=190, height=30, width=145)
     #Right Entry Bozes
-    Entry(small).place( x=420, y=74, height=30, width=145)
-    Entry(small).place(x=420, y=135, height=30,width=145)
-    Entry(small).place(x=420,y=190, height=30,width=145)
-
+    Entry7 = Entry(small).place( x=420, y=74, height=30, width=145)
+    Entry8 = Entry(small).place(x=420, y=135, height=30,width=145)
+    Entry9 = Entry(small).place(x=420,y=190, height=30,width=145)
 #Set Check Boxes
-    #Left Set Check Boxes
-    global box10s, box10
-    box10s = StringVar()
-    box10 = Checkbutton(small, text="Set", variable=box10s, bg="gray30", fg="white")
-    box10.deselect()
-    box10.place(x=40, y=50)
+    #Left Set Buttons
+    global Entry1Set
+    Entry1Set = Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=40, y=50, height=20,width=50)
+    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=40, y=110, height=20,width=50)
+    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=40, y=167, height=20,width=50)
 
-    global box11s, box11
-    box11s = StringVar()
-    box11 = Checkbutton(small, text="Set", variable=box11s, bg="gray30", fg="white")
-    box11.deselect()
-    box11.place(x=40, y=110)
-
-    global box12s, box12
-    box12s = StringVar()
-    box12 = Checkbutton(small, text="Set", variable=box12s, bg="gray30", fg="white")
-    box12.deselect()
-    box12.place(x=40, y=165)
-
-    #Middle Set Check boxes
-    global box13s, box13
-    box13s = StringVar()
-    box13 = Checkbutton(small, text="Set", variable=box13s, bg="gray30", fg="white")
-    box13.deselect()
-    box13.place(x=230, y=50)
-
-    global box14s, box14
-    box14s = StringVar()
-    box14 = Checkbutton(small, text="Set", variable=box14s, bg="gray30", fg="white")
-    box14.deselect()
-    box14.place(x=230, y=110)
-
-    global box15s, box15
-    box15s = StringVar()
-    box15 = Checkbutton(small, text="Set", variable=box15s, bg="gray30", fg="white")
-    box15.deselect()
-    box15.place(x=230, y=165)
+    #Middle Set Buttons
+    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=230, y=50, height=20,width=50)
+    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=230, y=110, height=20,width=50)
+    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=230, y=167, height=20,width=50)
 
     #Right Set Check Boxes
-    global box16s, box16
-    box16s = StringVar()
-    box16 = Checkbutton(small, text="Set", variable=box16s, bg="gray30", fg="white")
-    box16.deselect()
-    box16.place(x=420, y=50)
-
-    global box17s, box17
-    box17s = StringVar()
-    box17 = Checkbutton(small, text="Set", variable=box17s, bg="gray30", fg="white")
-    box17.deselect()
-    box17.place(x=420, y=110)
-
-    global box18s, box18
-    box18s = StringVar()
-    box18 = Checkbutton(small, text="Set", variable=box18s, bg="gray30", fg="white")
-    box18.deselect()
-    box18.place(x=420, y=165)
+    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=420, y=50, height=20,width=50)
+    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=420, y=110, height=20,width=50)
+    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=420, y=167, height=20,width=50)
 
 #Search Check Boxes
 
@@ -546,3 +579,4 @@ def buildSmall():
 #Label(master, text="Welcome to the Post Oak Distance Learning Hub", anchor="w", bg="gray20", fg="White", font=('Times New Roman', '20')).place(x=90,y=0,height= 40, width=440)
 
 master.mainloop()
+
