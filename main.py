@@ -15,7 +15,10 @@ master = Tk()
 master.title("Post Oak Distance Learning Hub")
 master.geometry("600x400") #dimensions
 master.configure(background='gray20')
-
+Entry1_var = StringVar()
+Entry2_var = StringVar()
+Entry3_var = StringVar()
+#go to 9
 def LogIn():
     Label(master, text="Welcome to the Post Oak Distance Learning Hub", anchor="w", bg="lightgreen", fg="White",font=('Times New Roman', '20')).place(x=102, y=0, height=40, width=398)
 LogIn()
@@ -161,7 +164,12 @@ def savePresets():
     var7 = box7s.get()
     var8 = box8s.get()
     var9 = box9s.get()
+    var10 = Entry1_var.get()
+    var11 = Entry2_var.get()
     varArray = [var1,var2,var3,var4,var5,var6,var7,var8,var9]
+    with open('pref.ini','r') as file:
+        data = file.readlines()
+        print(data)
     counter=0
     with open('pref.ini', 'w') as file:
         for i in varArray:
@@ -169,6 +177,25 @@ def savePresets():
             lineValue = 'box' + str(counter) + 's = '+i+'\n'
             print(lineValue)
             file.writelines(lineValue)
+        file.writelines(data[9])
+        file.writelines(data[10])
+        file.writelines(data[11])
+        #go to 18
+
+def saveEntry():
+    var10 = Entry1_var.get()
+    var11 = Entry2_var.get()
+    #var12 = Entry3_var.get()
+    counter = 0
+    with open('pref.ini','r') as file:
+        data = file.readlines()
+        print(data)
+    data[9]=(var10)
+    data[10]=('\n'+var11)
+    #go to 18
+
+    with open('pref.ini','w') as file:
+        file.writelines(data)
 
 def readINI():
     file=open('pref.ini')
@@ -242,24 +269,23 @@ def personMeet():
     Button(small, text='Ms. Pilisi', command=heALTH, bg="pink", fg="black", highlightbackground="pink").place(x=200, y=450, height=32, width=115)
     Button(small, text='Mr. Lowery', command=lowERY, bg="white", fg="black", highlightbackground="white").place(x=200, y=550, height=32, width=115)
 #This function is user-specific, it allows the user to choose their own presets for links and meetings to make the use of this app more streamline.
-
 def getEntry():
-    global Entry1
-    Entry1 = StringVar()
-    Entry1 = Entry1.get()
+    global Entry1_var
+    #Entry1_var = StringVar()
+    Entry1_var = Entry1_var.get()
     new = 1
-    url = Entry1
+    url = Entry1_var
     webbrowser.open(url, new=new)
-    print("Going to " + Entry1)
+    print("Going to " + Entry1_var)
 
 
-    global Entry2
-    Entry2 = StringVar()
-    Entry2 = Entry2.get()
+    global Entry2_var
+    Entry2_var = StringVar()
+    Entry2_var = Entry2_var.get()
     new = 1
-    url = Entry2
+    url = Entry2_var
     webbrowser.open(url, new=new)
-    print("Going to " + Entry2)
+    print("Going to " + Entry2_var)
 
     global Entry3
     Entry3 = StringVar()
@@ -315,7 +341,7 @@ def getEntry():
     new = 1
     url = Entry9
     webbrowser.open(url, new=new)
-    print("Going to Google...")
+    print("Going to " + Entry9)
 
 
 def customPreset():
@@ -327,9 +353,9 @@ def customPreset():
     Button(small, text='Search', command=getEntry, bg='green', fg='white', highlightbackground='green').place(x=380,y=246, height=35,width=70)  # login button
 
     #Left Entry Boxes
-    Entry1 = Entry(small).place(x=40,y=75, height=30,width=145)
-    Entry2 = Entry(small).place(x=40, y=135, height=30, width=145)
-    Entry3 = Entry(small).place(x=40, y=190, height=30,width=145)
+    Entry1 = Entry(small, textvariable = Entry1_var).place(x=40,y=75, height=30,width=145)
+    Entry2 = Entry(small, textvariable = Entry2_var).place(x=40, y=135, height=30, width=145)
+    Entry3 = Entry(small, textvariable = Entry3_var).place(x=40, y=190, height=30,width=145)
     #Middle Entry Boxes
     Entry4 = Entry(small).place(x=230, y=75, height=30, width=145)
     Entry5 = Entry(small).place( x=230, y=135, height=30, width=145)
@@ -340,14 +366,14 @@ def customPreset():
     Entry9 = Entry(small).place(x=420,y=190, height=30,width=145)
 #Set Check Boxes
     #Left Set Buttons
-    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=40, y=50, height=20,width=50)
-    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=40, y=110, height=20,width=50)
-    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=40, y=167, height=20,width=50)
+    Button(small, text='Set', command=saveEntry, bg='white', fg='black', highlightbackground='white').place(x=40, y=50, height=20,width=50)
+    Button(small, text='Set', command=saveEntry, bg='white', fg='black', highlightbackground='white').place(x=40, y=110, height=20,width=50)
+    Button(small, text='Set', command=saveEntry, bg='white', fg='black', highlightbackground='white').place(x=40, y=167, height=20,width=50)
 
     #Middle Set Buttons
-    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=230, y=50, height=20,width=50)
-    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=230, y=110, height=20,width=50)
-    Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=230, y=167, height=20,width=50)
+    Button(small, text='Set', command=saveEntry, bg='white', fg='black', highlightbackground='white').place(x=230, y=50, height=20,width=50)
+    Button(small, text='Set', command=saveEntry, bg='white', fg='black', highlightbackground='white').place(x=230, y=110, height=20,width=50)
+    Button(small, text='Set', command=saveEntry, bg='white', fg='black', highlightbackground='white').place(x=230, y=167, height=20,width=50)
 
     #Right Set Check Boxes
     Button(small, text='Set', command=getEntry, bg='white', fg='black', highlightbackground='white').place(x=420, y=50, height=20,width=50)
