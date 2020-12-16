@@ -181,7 +181,6 @@ def savePresets():
             lineValue = 'box' + str(counter) + 's = '+i+'\n'
             print(lineValue)
             file.writelines(lineValue)
-        file.writelines(data[9])
         file.writelines(data[10])
         file.writelines(data[11])
         file.writelines(data[12])
@@ -207,15 +206,15 @@ def saveEntry():
     with open('pref.ini','r') as file:
         data = file.readlines()
         print(data)
-    data[10] = (var10)
-    data[11] = ('\n' + var11)
-    data[12] = ('\n' + var12)
-    data[13] = ('\n' + var13)
-    data[14] = ('\n' + var14)
-    data[15] = ('\n' + var15)
-    data[16] = ('\n' + var16)
-    data[17] = ('\n' + var17)
-    data[18] = ('\n' + var18)
+    data[9] = (var10)
+    data[10] = ('\n' + var11)
+    data[11] = ('\n' + var12)
+    data[12] = ('\n' + var13)
+    data[13] = ('\n' + var14)
+    data[14] = ('\n' + var15)
+    data[15] = ('\n' + var16)
+    data[16] = ('\n' + var17)
+    data[17] = ('\n' + var18)
     #go to 18
 
     with open('pref.ini','w') as file:
@@ -307,7 +306,7 @@ def personMeet():
 #This function is user-specific, it allows the user to choose their own presets for links and meetings to make the use of this app more streamline.
 def getEntry():
     global Entry1_var
-    #Entry1_var = StringVar()
+    Entry1_var = StringVar()
     Entry1_var = Entry1_var.get()
     new = 1
     url = Entry1_var
