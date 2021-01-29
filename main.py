@@ -174,13 +174,16 @@ def savePresets():
     with open('pref.ini','r') as file:
         data = file.readlines()
         print(data)
-    counter=0
+    counter = 0
     with open('pref.ini', 'w') as file:
         for i in varArray:
-            counter += 1
+            #counter += 1
             lineValue = 'box' + str(counter) + 's = '+i+'\n'
             print(lineValue)
             file.writelines(lineValue)
+            counter += 1
+        file.writelines(data[8])
+        file.writelines(data[9])
         file.writelines(data[10])
         file.writelines(data[11])
         file.writelines(data[12])
@@ -190,35 +193,10 @@ def savePresets():
         file.writelines(data[16])
         file.writelines(data[17])
         file.writelines(data[18])
+        file.writelines(data[19])
         #go to 18
 
-def saveEntry():
-    var10 = Entry1_var.get()
-    var11 = Entry2_var.get()
-    var12 = Entry3_var.get()
-    var13 = Entry4_var.get()
-    var14 = Entry5_var.get()
-    var15 = Entry6_var.get()
-    var16 = Entry7_var.get()
-    var17 = Entry8_var.get()
-    var18 = Entry9_var.get()
-    counter = 0
-    with open('pref.ini','r') as file:
-        data = file.readlines()
-        print(data)
-    data[9] = (var10)
-    data[10] = ('\n' + var11)
-    data[11] = ('\n' + var12)
-    data[12] = ('\n' + var13)
-    data[13] = ('\n' + var14)
-    data[14] = ('\n' + var15)
-    data[15] = ('\n' + var16)
-    data[16] = ('\n' + var17)
-    data[17] = ('\n' + var18)
-    #go to 18
-
-    with open('pref.ini','w') as file:
-        file.writelines(data)
+#
 
 def readINI():
     file=open('pref.ini')
@@ -304,79 +282,126 @@ def personMeet():
     Button(small, text='Ms. Pilisi', command=heALTH, bg="pink", fg="black", highlightbackground="pink").place(x=200, y=450, height=32, width=115)
     Button(small, text='Mr. Lowery', command=lowERY, bg="white", fg="black", highlightbackground="white").place(x=200, y=550, height=32, width=115)
 #This function is user-specific, it allows the user to choose their own presets for links and meetings to make the use of this app more streamline.
+
+Entry1_var = StringVar()
+Entry2_var = StringVar()
+Entry3_var = StringVar()
+Entry4_var = StringVar()
+Entry5_var = StringVar()
+Entry6_var = StringVar()
+Entry7_var = StringVar()
+Entry8_var = StringVar()
+Entry9_var = StringVar()
+
+#def loadINIurl():
+
+
+def saveEntry():
+    var10 = Entry1_var.get()
+    var11 = Entry2_var.get()
+    var12 = Entry3_var.get()
+    var13 = Entry4_var.get()
+    var14 = Entry5_var.get()
+    var15 = Entry6_var.get()
+    var16 = Entry7_var.get()
+    var17 = Entry8_var.get()
+    var18 = Entry9_var.get()
+    print(var10)
+    varArray = [var10,var11,var12,var13,var14,var15,var16,var17,var18]
+    counter = 0
+    with open('pref.ini','r') as file:
+        data = file.readlines()
+        print(data)
+    print(len(data))
+    if data[10] != '\n':
+        #data[10] = (var10)
+        Entry1_var.set(data[10])
+    data[11] = ('\n' + var11)
+    data[12] = ('\n' + var12)
+    data[13] = ('\n' + var13)
+    data[14] = ('\n' + var14)
+    data[15] = ('\n' + var15)
+    data[16] = ('\n' + var16)
+    data[17] = ('\n' + var17)
+    data[18] = ('\n' + var18)
+    #go to 18
+
+    with open('pref.ini','w') as file:
+        file.writelines(data)
 def getEntry():
-    global Entry1_var
-    Entry1_var = StringVar()
-    Entry1_var = Entry1_var.get()
+    #global Entry1_var
+    #Entry1_var = StringVar()
+    LocalEntry1_var = Entry1_var.get()
+    print(LocalEntry1_var)
     new = 1
-    url = Entry1_var
+    url = LocalEntry1_var
     webbrowser.open(url, new=new)
-    print("Going to " + Entry1_var)
+    print("Going to " + LocalEntry1_var)
 
 
-    global Entry2_var
-    Entry2_var = StringVar()
-    Entry2_var = Entry2_var.get()
+    #global Entry2_var
+    #Entry2_var = StringVar()
+    LocalEntry2_var = Entry2_var.get()
     new = 1
-    url = Entry2_var
+    url = LocalEntry2_var
     webbrowser.open(url, new=new)
-    print("Going to " + Entry2_var)
+    print("Going to " + LocalEntry2_var)
 
-    global Entry3_var
-    Entry3_var = StringVar()
-    Entry3_var = Entry3_var.get()
+    #global Entry3_var
+    #Entry3_var = StringVar()
+    LocalEntry3_var = Entry3_var.get()
     new = 1
-    url = Entry3_var
+    url = LocalEntry3_var
     webbrowser.open(url, new=new)
-    print("Going to " + Entry3_var)
+    print("Going to " + LocalEntry3_var)
 
-    global Entry4_var
-    Entry4_var = StringVar()
-    Entry4_var = Entry4_var.get()
+    #global Entry4_var
+    #Entry4_var = StringVar()
+    LocalEntry4_var = Entry4_var.get()
     new = 1
-    url = Entry4_var
+    url = LocalEntry4_var
     webbrowser.open(url, new=new)
-    print("Going to " + Entry4_var)
+    print("Going to " + LocalEntry4_var)
 
-    global Entry5_var
-    Entry5_var = StringVar()
-    Entry5_var = Entry5_var.get()
+    #global Entry5_var
+    #Entry5_var = StringVar()
+    LocalEntry5_var = Entry5_var.get()
     new = 1
-    url = Entry5_var
+    url = LocalEntry5_var
     webbrowser.open(url, new=new)
-    print("Going to " + Entry5_var)
+    print("Going to " + LocalEntry5_var)
 
-    global Entry6_var
-    Entry6_var = StringVar()
-    Entry6_var = Entry6_var.get()
+   # global Entry6_var
+   # Entry6_var = StringVar()
+    LocalEntry6_var = Entry6_var.get()
     new = 1
-    url = Entry6_var
+    url = LocalEntry6_var
     webbrowser.open(url, new=new)
-    print("Going to" + Entry6_var)
+    print("Going to " + LocalEntry6_var)
 
-    global Entry7_var
-    Entry7_var = StringVar()
-    Entry7_var = Entry7_var.get()
+    #global Entry7_var
+   # Entry7_var = StringVar()
+    LocalEntry7_var = Entry7_var.get()
     new = 1
-    url = Entry7_var
+    url = LocalEntry7_var
     webbrowser.open(url, new=new)
-    print("Going to " + Entry7_var)
+    print("Going to " + LocalEntry7_var)
 
-    global Entry8_var
-    Entry8_var = StringVar()
-    Entry8_var = Entry8_var.get()
+    #global Entry8_var
+    #Entry8_var = StringVar()
+    LocalEntry8_var = Entry8_var.get()
     new = 1
-    url = Entry8_var
+    url = LocalEntry8_var
     webbrowser.open(url, new=new)
-    print("Going to " + Entry8_var)
+    print("Going to " + LocalEntry8_var)
 
-    global Entry9_var
-    Entry9_var = StringVar()
-    Entry9_var = Entry9_var.get()
+    #global Entry9_var
+    #Entry9_var = StringVar()
+    LocalEntry9_var = Entry9_var.get()
     new = 1
-    url = Entry9_var
+    url = LocalEntry9_var
     webbrowser.open(url, new=new)
-    print("Going to " + Entry9_var)
+    print("Going to " + LocalEntry9_var)
 
 
 def customPreset():
@@ -386,7 +411,7 @@ def customPreset():
     small.configure(background='gray30')
     Label(small, text="User's Custom Presets", anchor="w", bg="gray30", fg="White",font=('Times New Roman', '20')).place(x=210, y=0, height=40, width=300)
     Button(small, text='Search', command=getEntry, bg='green', fg='white', highlightbackground='green').place(x=340,y=246, height=35,width=70)  # search button
-
+    global Entry1,Entry2,Entry3,Entry4,Entry5, Entry6, Entry7,Entry8,Entry9
     #Left Entry Boxes
     Entry1 = Entry(small, textvariable = Entry1_var).place(x=40,y=75, height=30,width=145)
     Entry2 = Entry(small, textvariable = Entry2_var).place(x=40, y=135, height=30, width=145)
