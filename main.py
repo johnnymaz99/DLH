@@ -293,116 +293,115 @@ Entry7_var = StringVar()
 Entry8_var = StringVar()
 Entry9_var = StringVar()
 
-#def loadINIurl():
 
-
-def saveEntry():
-    var10 = Entry1_var.get()
-    var11 = Entry2_var.get()
-    var12 = Entry3_var.get()
-    var13 = Entry4_var.get()
-    var14 = Entry5_var.get()
-    var15 = Entry6_var.get()
-    var16 = Entry7_var.get()
-    var17 = Entry8_var.get()
-    var18 = Entry9_var.get()
-    print(var10)
-    varArray = [var10,var11,var12,var13,var14,var15,var16,var17,var18]
-    counter = 0
+def loadEntry():
+    varArray = [Entry1_var,Entry2_var,Entry3_var,Entry4_var,Entry5_var,Entry6_var,Entry7_var,Entry8_var,Entry9_var]
     with open('pref.ini','r') as file:
         data = file.readlines()
-        print(data)
-    print(len(data))
-    if data[10] != '\n':
-        #data[10] = (var10)
-        Entry1_var.set(data[10])
-    data[11] = ('\n' + var11)
-    data[12] = ('\n' + var12)
-    data[13] = ('\n' + var13)
-    data[14] = ('\n' + var14)
-    data[15] = ('\n' + var15)
-    data[16] = ('\n' + var16)
-    data[17] = ('\n' + var17)
-    data[18] = ('\n' + var18)
-    #go to 18
+        #print(data)
+    #print(len(data))
+    #print(var10)
+    counter = 9
+    var_counter = 0
+    for i in data[9:]:
+        print(i)
+        if i != '\n':
+            #data[10] = (var10)
+            #Entry1_var.set(i)
+            varArray[var_counter].set(i.rstrip("\n"))
+        counter = counter + 1
+        var_counter = var_counter +1
+loadEntry()
 
+def saveEntry():
+    with open('pref.ini','r') as file:
+        data = file.readlines()
+    print(data)
+    var1 = Entry1_var.get().rstrip("\n") +"\n"
+    data[9] = var1
+    var2 = Entry2_var.get().rstrip("\n") +"\n"
+    data[10] = var2
+    var3 = Entry3_var.get().rstrip("\n") +"\n"
+    data[11] = var3
+    var4 = Entry4_var.get().rstrip("\n") +"\n"
+    data[12] = var4
+    var5 = Entry5_var.get().rstrip("\n") +"\n"
+    data[13] = var5
+    var6 = Entry6_var.get().rstrip("\n") +"\n"
+    data[14] = var6
+    var7 = Entry7_var.get().rstrip("\n") +"\n"
+    data[15] = var7
+    var8 = Entry8_var.get().rstrip("\n") +"\n"
+    data[16] = var8
+    var9 = Entry9_var.get().rstrip("\n")
+    data[17] = var9
     with open('pref.ini','w') as file:
         file.writelines(data)
+    print(data)
 def getEntry():
-    #global Entry1_var
-    #Entry1_var = StringVar()
-    LocalEntry1_var = Entry1_var.get()
-    print(LocalEntry1_var)
-    new = 1
-    url = LocalEntry1_var
-    webbrowser.open(url, new=new)
-    print("Going to " + LocalEntry1_var)
 
+    if(box19s.get()=='1'):
+        LocalEntry1_var = Entry1_var.get()
+        new = 1
+        url = LocalEntry1_var
+        webbrowser.open(url, new=new)
+        print("Going to " + LocalEntry1_var)
 
-    #global Entry2_var
-    #Entry2_var = StringVar()
-    LocalEntry2_var = Entry2_var.get()
-    new = 1
-    url = LocalEntry2_var
-    webbrowser.open(url, new=new)
-    print("Going to " + LocalEntry2_var)
+    if (box20s.get() == '1'):
+        LocalEntry2_var = Entry2_var.get()
+        new = 1
+        url = LocalEntry2_var
+        webbrowser.open(url, new=new)
+        print("Going to " + LocalEntry2_var)
 
-    #global Entry3_var
-    #Entry3_var = StringVar()
-    LocalEntry3_var = Entry3_var.get()
-    new = 1
-    url = LocalEntry3_var
-    webbrowser.open(url, new=new)
-    print("Going to " + LocalEntry3_var)
+    if (box21s.get() == '1'):
+        LocalEntry3_var = Entry3_var.get()
+        new = 1
+        url = LocalEntry3_var
+        webbrowser.open(url, new=new)
+        print("Going to " + LocalEntry3_var)
 
-    #global Entry4_var
-    #Entry4_var = StringVar()
-    LocalEntry4_var = Entry4_var.get()
-    new = 1
-    url = LocalEntry4_var
-    webbrowser.open(url, new=new)
-    print("Going to " + LocalEntry4_var)
+    if (box22s.get() == '1'):
+        LocalEntry4_var = Entry4_var.get()
+        new = 1
+        url = LocalEntry4_var
+        webbrowser.open(url, new=new)
+        print("Going to " + LocalEntry4_var)
 
-    #global Entry5_var
-    #Entry5_var = StringVar()
-    LocalEntry5_var = Entry5_var.get()
-    new = 1
-    url = LocalEntry5_var
-    webbrowser.open(url, new=new)
-    print("Going to " + LocalEntry5_var)
+    if (box23s.get() == '1'):
+        LocalEntry5_var = Entry5_var.get()
+        new = 1
+        url = LocalEntry5_var
+        webbrowser.open(url, new=new)
+        print("Going to " + LocalEntry5_var)
 
-   # global Entry6_var
-   # Entry6_var = StringVar()
-    LocalEntry6_var = Entry6_var.get()
-    new = 1
-    url = LocalEntry6_var
-    webbrowser.open(url, new=new)
-    print("Going to " + LocalEntry6_var)
+    if (box24s.get() == '1'):
+        LocalEntry6_var = Entry6_var.get()
+        new = 1
+        url = LocalEntry6_var
+        webbrowser.open(url, new=new)
+        print("Going to " + LocalEntry6_var)
 
-    #global Entry7_var
-   # Entry7_var = StringVar()
-    LocalEntry7_var = Entry7_var.get()
-    new = 1
-    url = LocalEntry7_var
-    webbrowser.open(url, new=new)
-    print("Going to " + LocalEntry7_var)
+    if (box25s.get() == '1'):
+        LocalEntry7_var = Entry7_var.get()
+        new = 1
+        url = LocalEntry7_var
+        webbrowser.open(url, new=new)
+        print("Going to " + LocalEntry7_var)
 
-    #global Entry8_var
-    #Entry8_var = StringVar()
-    LocalEntry8_var = Entry8_var.get()
-    new = 1
-    url = LocalEntry8_var
-    webbrowser.open(url, new=new)
-    print("Going to " + LocalEntry8_var)
+    if (box26s.get() == '1'):
+        LocalEntry8_var = Entry8_var.get()
+        new = 1
+        url = LocalEntry8_var
+        webbrowser.open(url, new=new)
+        print("Going to " + LocalEntry8_var)
 
-    #global Entry9_var
-    #Entry9_var = StringVar()
-    LocalEntry9_var = Entry9_var.get()
-    new = 1
-    url = LocalEntry9_var
-    webbrowser.open(url, new=new)
-    print("Going to " + LocalEntry9_var)
-
+    if (box27s.get() == '1'):
+        LocalEntry9_var = Entry9_var.get()
+        new = 1
+        url = LocalEntry9_var
+        webbrowser.open(url, new=new)
+        print("Going to " + LocalEntry9_var)
 
 def customPreset():
     small = Toplevel(master)
@@ -432,9 +431,10 @@ def customPreset():
     #Left Search Check Boxes
     global box19s,box19
     box19s = StringVar()
-    box19 = Checkbutton(small,text="Search",variable=box19s,bg="gray30",fg="white")
+    box19 = Checkbutton(small,text="Search", variable=box19s,bg="gray30",fg="white")
     box19.deselect()
     box19.place(x=90,y=50)
+
 
     global box20s,box20
     box20s = StringVar()
@@ -651,3 +651,4 @@ def buildSmall():
 #Label(master, text="Welcome to the Post Oak Distance Learning Hub", anchor="w", bg="gray20", fg="White", font=('Times New Roman', '20')).place(x=90,y=0,height= 40, width=440)
 
 master.mainloop()
+
