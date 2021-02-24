@@ -174,14 +174,16 @@ def savePresets():
     with open('pref.ini','r') as file:
         data = file.readlines()
         print(data)
-    counter = 0
+    counter = 1
     with open('pref.ini', 'w') as file:
         for i in varArray:
-            #counter += 1
-            lineValue = 'box' + str(counter) + 's = '+i+'\n'
-            print(lineValue)
-            file.writelines(lineValue)
-            counter += 1
+            if counter <=8:
+
+                #counter += 1
+                lineValue = 'box' + str(counter) + 's = '+i+'\n'
+                print(lineValue)
+                file.writelines(lineValue)
+                counter += 1
         file.writelines(data[8])
         file.writelines(data[9])
         file.writelines(data[10])
@@ -192,8 +194,8 @@ def savePresets():
         file.writelines(data[15])
         file.writelines(data[16])
         file.writelines(data[17])
-        file.writelines(data[18])
-        file.writelines(data[19])
+        #file.writelines(data[18])
+        #file.writelines(data[19])
         #go to 18
 
 #
@@ -651,4 +653,3 @@ def buildSmall():
 #Label(master, text="Welcome to the Post Oak Distance Learning Hub", anchor="w", bg="gray20", fg="White", font=('Times New Roman', '20')).place(x=90,y=0,height= 40, width=440)
 
 master.mainloop()
-
